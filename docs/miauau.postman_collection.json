@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "a316f20c-9a50-4e0d-ad5d-e9123f676f14",
+		"name": "miauau",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21397337"
+	},
+	"item": [
+		{
+			"name": "Animal List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/animal",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Animal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Gato\",\n    \"sex\": \"M\",\n    \"description\": \"Um gato quieto\",\n    \"ageGroupId\": \"2\",\n    \"color\": \"2\",\n    \"aproximatedAge\": \"5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/animal",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"animal"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}
