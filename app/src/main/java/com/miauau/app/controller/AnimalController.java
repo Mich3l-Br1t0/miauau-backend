@@ -4,7 +4,6 @@ import com.miauau.app.entity.AnimalEntity;
 import com.miauau.app.repository.AnimalRepository;
 import com.miauau.app.response.AnimalResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +25,5 @@ public class AnimalController {
   public void save(@RequestBody AnimalResponse response) {
     AnimalEntity entity = new AnimalEntity(response);
     repository.save(entity);
-    return;
   }
 }

@@ -6,7 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@jakarta.persistence.Entity(name = "animal")
+@Entity(name = "animal")
 @Table(name = "animal")
 @Getter
 @Setter
