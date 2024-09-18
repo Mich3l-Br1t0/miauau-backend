@@ -1,38 +1,65 @@
 package com.miauau.app.entity;
 
-import com.miauau.app.response.AnimalResponse;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Entity(name = "animal")
+@Entity
 @Table(name = "animal")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
-public class AnimalEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private Character sex;
-    private String description;
-    private Long ageGroupId;
-    private boolean castrated;
-    private Integer color;
-    private Integer aproximatedAge;
-    private String createdAt;
+@Data
+public class AnimalEntity implements Serializable {
+  @Serial
+  private static final long serialVersionUID = 1L;
 
-    public AnimalEntity(AnimalResponse response) {
-        this.name = response.name();
-        this.sex = response.sex();
-        this.description = response.description();
-        this.ageGroupId = response.ageGroupId();
-        this.castrated = response.castrated();
-        this.color = response.color();
-        this.aproximatedAge = response.aproximatedAge();
-        this.createdAt = LocalDateTime.now().toString();
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
+
+  @Column(nullable = false)
+  private String name;
+
+  @Column(nullable = false)
+  private Character sex;
+
+  @Column
+  private String description;
+
+  @Column(nullable = false)
+  private Integer ageGroupId;
+
+  @Column(nullable = false)
+  private Boolean castrated;
+
+  @Column(nullable = false)
+  private Integer color;
+
+  @Column(nullable = false)
+  private Integer approximatedAge;
+
+  @Column
+  private String vaccination_application_date;
+
+  @Column
+  private String anti_fleas_application_date;
+
+  @Column
+  private String deworming_application_date;
+
+  @Column(nullable = false)
+  private LocalDateTime createdAt;
+
+  @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL)
+  private AssistanceNeedEntity assistanceNeed;
+
+  @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL)
+  private HealthSituationEntity healthSituation;
+
+  @PrePersist
+  protected void onCreate() {
+    this.createdAt = LocalDateTime.now();
+  }
 }
