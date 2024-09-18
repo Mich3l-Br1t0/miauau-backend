@@ -1,8 +1,8 @@
 package com.miauau.app.controller;
 
 import com.miauau.app.entity.AnimalEntity;
-import com.miauau.app.repository.AnimalRepository;
-import com.miauau.app.response.AnimalResponse;
+import com.miauau.app.request.AnimalRequest;
+import com.miauau.app.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +13,15 @@ import java.util.List;
 public class AnimalController {
 
   @Autowired
-  private AnimalRepository repository;
+  private AnimalService service;
 
   @GetMapping
-  public List<AnimalResponse> get(){
-    return  repository.findAll().stream().map(AnimalResponse::new).toList();
+  public List<AnimalEntity> getAll() {
+    return service.getAll();
   }
 
-  @CrossOrigin(origins = "*", allowedHeaders = "*")
   @PostMapping
-  public void save(@RequestBody AnimalResponse response) {
-    AnimalEntity entity = new AnimalEntity(response);
-    repository.save(entity);
+  public AnimalEntity save(@RequestBody AnimalRequest request) {
+    return service.save(request);
   }
 }

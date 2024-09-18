@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "assistanceNeed")
+@Table(name = "healthSituation")
 @Data
-public class AssistanceNeedEntity implements Serializable {
+public class HealthSituationEntity implements Serializable {
   @Serial
   private static final long serialVersionUID = 1L;
 
@@ -20,13 +20,28 @@ public class AssistanceNeedEntity implements Serializable {
   private UUID id;
 
   @Column(nullable = false)
-  private boolean veterinarian;
+  private boolean healthy;
 
   @Column(nullable = false)
-  private boolean urgency;
+  private boolean dirty;
 
   @Column(nullable = false)
-  private boolean bath;
+  private boolean hurt;
+
+  @Column(nullable = false)
+  private boolean mange;
+
+  @Column(nullable = false)
+  private boolean fleas;
+
+  @Column(nullable = false)
+  private boolean ticks;
+
+  @Column(nullable = false)
+  private boolean vomiting;
+
+  @Column(nullable = false)
+  private boolean limping;
 
   @Column
   private String other;
