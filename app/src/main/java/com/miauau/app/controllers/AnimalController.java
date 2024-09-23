@@ -1,7 +1,7 @@
 package com.miauau.app.controllers;
 
 import com.miauau.app.entities.AnimalEntity;
-import com.miauau.app.request.AnimalRequest;
+import com.miauau.app.requests.AnimalRequest;
 import com.miauau.app.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

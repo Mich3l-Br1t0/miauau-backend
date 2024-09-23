@@ -4,7 +4,7 @@ import com.miauau.app.entities.AnimalEntity;
 import com.miauau.app.entities.AssistanceNeedEntity;
 import com.miauau.app.entities.HealthSituationEntity;
 import com.miauau.app.repositories.AnimalRepository;
-import com.miauau.app.request.AnimalRequest;
+import com.miauau.app.requests.AnimalRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class AnimalService {
 
     animal.setAssistanceNeed(assistanceNeed);
     animal.setHealthSituation(healthSituation);
-    
+
     return repository.save(animal);
   }
 
