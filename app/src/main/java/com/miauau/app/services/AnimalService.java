@@ -1,9 +1,9 @@
-package com.miauau.app.service;
+package com.miauau.app.services;
 
-import com.miauau.app.entity.AnimalEntity;
-import com.miauau.app.entity.AssistanceNeedEntity;
-import com.miauau.app.entity.HealthSituationEntity;
-import com.miauau.app.repository.AnimalRepository;
+import com.miauau.app.entities.AnimalEntity;
+import com.miauau.app.entities.AssistanceNeedEntity;
+import com.miauau.app.entities.HealthSituationEntity;
+import com.miauau.app.repositories.AnimalRepository;
 import com.miauau.app.request.AnimalRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

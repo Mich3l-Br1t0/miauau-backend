@@ -1,6 +1,6 @@
-package com.miauau.app.repository;
+package com.miauau.app.repositories;
 
-import com.miauau.app.entity.AnimalEntity;
+import com.miauau.app.entities.AnimalEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

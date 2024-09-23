@@ -1,4 +1,4 @@
-package com.miauau.app.entity;
+package com.miauau.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "healthSituation")
+@Table(name = "assistanceNeed")
 @Data
-public class HealthSituationEntity implements Serializable {
+public class AssistanceNeedEntity implements Serializable {
   @Serial
   private static final long serialVersionUID = 1L;
 
@@ -20,28 +20,13 @@ public class HealthSituationEntity implements Serializable {
   private UUID id;
 
   @Column(nullable = false)
-  private boolean healthy;
+  private boolean veterinarian;
 
   @Column(nullable = false)
-  private boolean dirty;
+  private boolean urgency;
 
   @Column(nullable = false)
-  private boolean hurt;
-
-  @Column(nullable = false)
-  private boolean mange;
-
-  @Column(nullable = false)
-  private boolean fleas;
-
-  @Column(nullable = false)
-  private boolean ticks;
-
-  @Column(nullable = false)
-  private boolean vomiting;
-
-  @Column(nullable = false)
-  private boolean limping;
+  private boolean bath;
 
   @Column
   private String other;
