@@ -37,8 +37,8 @@ public class AdoptionCandidateAnimalDailyCareEntity implements Serializable {
     @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
     private AdoptionCandidateAnimalFoodTypeEntity foodType;
 
-//    @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAnimalDailyTimeAloneEntity timeAlone;
+    @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
+    private AdoptionCandidateAnimalDailyTimeAloneEntity timeAlone;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne

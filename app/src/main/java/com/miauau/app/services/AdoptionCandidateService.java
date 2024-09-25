@@ -194,6 +194,7 @@ public class AdoptionCandidateService {
     dailyCare.setHowWillEducate(request.dailyCare().getHowWillEducate());
     dailyCare.setHasPetCarrier(request.dailyCare().isHasPetCarrier());
     dailyCare.setFoodType(getFoodType(request, dailyCare));
+    dailyCare.setTimeAlone(getTimeAlone(request, dailyCare));
 
     return dailyCare;
   }
@@ -205,6 +206,15 @@ public class AdoptionCandidateService {
     foodType.setOther(request.dailyCare().getFoodType().getOther());
     foodType.setDailyCare(dailyCare);
     return foodType;
+  }
+
+  private static AdoptionCandidateAnimalDailyTimeAloneEntity getTimeAlone(AdoptionCandidateRequest request, AdoptionCandidateAnimalDailyCareEntity dailyCare) {
+    AdoptionCandidateAnimalDailyTimeAloneEntity timeAlone = new AdoptionCandidateAnimalDailyTimeAloneEntity();
+    timeAlone.setOneToThreeHours(request.dailyCare().getTimeAlone().isOneToThreeHours());
+    timeAlone.setThreeToSevenHours(request.dailyCare().getTimeAlone().isThreeToSevenHours());
+    timeAlone.setEightOrMoreHours(request.dailyCare().getTimeAlone().isEightOrMoreHours());
+    timeAlone.setDailyCare(dailyCare);
+    return timeAlone;
   }
 }
 
