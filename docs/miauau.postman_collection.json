@@ -82,6 +82,21 @@
 				},
 				{
 					"name": "New Animal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {\r",
+									"    const animal_id = pm.response.json().id;\r",
+									"    pm.collectionVariables.set(\"animal_id\", animal_id);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -107,10 +122,69 @@
 			]
 		},
 		{
+			"name": "adoption-candidate",
+			"item": [
+				{
+					"name": "New Candidate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {\r",
+									"    const adoption_candidate_id = pm.response.json().id;\r",
+									"    pm.collectionVariables.set(\"adoption_candidate_id\", adoption_candidate_id);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"person\": {\r\n    \"id\": {{person_id}}\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": {{animal_id}}\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/adoptionCandidate"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "person",
 			"item": [
 				{
 					"name": "New Person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {\r",
+									"    const person_id = pm.response.json().id;\r",
+									"    pm.collectionVariables.set(\"person_id\", person_id);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -183,6 +257,20 @@
 			"key": "access_token",
 			"value": "",
 			"type": "string"
+		},
+		{
+			"key": "animal_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "person_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "adoption_candidate_id",
+			"value": ""
 		}
 	]
 }
