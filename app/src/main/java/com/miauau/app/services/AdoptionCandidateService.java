@@ -52,6 +52,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateOtherAnimalsEntity otherAnimals = getAdoptionCandidateOtherAnimalsEntity(response, candidate);
     candidate.setOtherAnimals(otherAnimals);
 
+    AdoptionCandidateAnimalDailyCareEntity dailyCare = getAdoptionCandidateAnimalDailyCareEntity(response, candidate);
+    candidate.setDailyCare(dailyCare);
+
     return repository.save(candidate);
   }
 
@@ -160,6 +163,17 @@ public class AdoptionCandidateService {
     otherAnimals.setHadAnimalsBefore(response.otherAnimals().isHadAnimalsBefore());
 
     return otherAnimals;
+  }
+
+  private AdoptionCandidateAnimalDailyCareEntity getAdoptionCandidateAnimalDailyCareEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateAnimalDailyCareEntity dailyCare = new AdoptionCandidateAnimalDailyCareEntity();
+    dailyCare.setResponsibleForCare(response.dailyCare().getResponsibleForCare());
+    dailyCare.setResponsibleForCareInCaseOfTravel(response.dailyCare().getResponsibleForCareInCaseOfTravel());
+    dailyCare.setDailyWalks(response.dailyCare().getDailyWalks());
+    dailyCare.setHowWillEducate(response.dailyCare().getHowWillEducate());
+    dailyCare.setHasPetCarrier(response.dailyCare().isHasPetCarrier());
+
+    return dailyCare;
   }
 }
 

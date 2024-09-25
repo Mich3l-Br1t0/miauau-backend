@@ -40,8 +40,8 @@ public class AdoptionCandidateEntity implements Serializable {
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private AdoptionCandidateAgreementsEntity agreements;
 
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAnimalDailyCareEntity dailyCare;
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateAnimalDailyCareEntity dailyCare;
 
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal;
