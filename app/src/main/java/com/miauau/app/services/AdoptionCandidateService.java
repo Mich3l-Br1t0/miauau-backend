@@ -46,6 +46,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateHousingProfileEntity housingProfile = getAdoptionCandidateHousingProfileEntity(response, candidate);
     candidate.setHousingProfile(housingProfile);
 
+    AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal = getAdoptionCandidateAttitudesTowardsTheAnimalEntity(response, candidate);
+    candidate.setAttitudesTowardsTheAnimal(attitudesTowardsTheAnimal);
+
     return repository.save(candidate);
   }
 
@@ -130,6 +133,20 @@ public class AdoptionCandidateService {
     housingProfile.setCandidate(candidate);
 
     return housingProfile;
+  }
+
+  private AdoptionCandidateAttitudesTowardsTheAnimalEntity getAdoptionCandidateAttitudesTowardsTheAnimalEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal = new AdoptionCandidateAttitudesTowardsTheAnimalEntity();
+    attitudesTowardsTheAnimal.setGetsLost(response.attitudesTowardsTheAnimal().getGetsLost());
+    attitudesTowardsTheAnimal.setGetsSickOrAccident(response.attitudesTowardsTheAnimal().getGetsSickOrAccident());
+    attitudesTowardsTheAnimal.setHurtsYourChild(response.attitudesTowardsTheAnimal().getHurtsYourChild());
+    attitudesTowardsTheAnimal.setDamagesValuableObject(response.attitudesTowardsTheAnimal().getDamagesValuableObject());
+    attitudesTowardsTheAnimal.setPeesOrPoopsInInappropriatePlace(response.attitudesTowardsTheAnimal().getPeesOrPoopsInInappropriatePlace());
+    attitudesTowardsTheAnimal.setDoesThingsYouDontWant(response.attitudesTowardsTheAnimal().getDoesThingsYouDontWant());
+    attitudesTowardsTheAnimal.setIfYouHaveAChild(response.attitudesTowardsTheAnimal().getIfYouHaveAChild());
+    attitudesTowardsTheAnimal.setCandidate(candidate);
+
+    return attitudesTowardsTheAnimal;
   }
 }
 
