@@ -1,6 +1,7 @@
 package com.miauau.app.services;
 
 import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
+import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateIncomeEntity;
 import com.miauau.app.entities.adoptioncandidate.AdoptionMotivationEntity;
 import com.miauau.app.repositories.AdoptionCandidateRepository;
 import com.miauau.app.requests.AdoptionCandidateRequest;
@@ -37,6 +38,14 @@ public class AdoptionCandidateService {
 
     motivation.setCandidate(candidate);
     candidate.setMotivation(motivation);
+
+    AdoptionCandidateIncomeEntity income = new AdoptionCandidateIncomeEntity();
+    income.setFixed(response.income().isFixed());
+    income.setVariable(response.income().isVariable());
+    income.setDoesNotHave(response.income().isDoesNotHave());
+
+    income.setCandidate(candidate);
+    candidate.setIncome(income);
 
     return repository.save(candidate);
   }

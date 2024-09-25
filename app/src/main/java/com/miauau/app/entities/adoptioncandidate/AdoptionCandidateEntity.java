@@ -55,9 +55,9 @@ public class AdoptionCandidateEntity implements Serializable {
 //    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
 //    private AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse;
 //
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateIncomeEntity income;
-//
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateIncomeEntity income;
+
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private AdoptionMotivationEntity motivation;
 

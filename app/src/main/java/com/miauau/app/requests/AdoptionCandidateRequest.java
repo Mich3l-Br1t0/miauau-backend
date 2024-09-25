@@ -2,6 +2,7 @@ package com.miauau.app.requests;
 
 import com.miauau.app.entities.AnimalEntity;
 import com.miauau.app.entities.PersonEntity;
+import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateIncomeEntity;
 import com.miauau.app.entities.adoptioncandidate.AdoptionMotivationEntity;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public record AdoptionCandidateRequest(
         boolean possibilityOfMoving,
         String whatHappensInCaseOfMoving,
         List<AnimalEntity> wantedAnimals,
-        AdoptionMotivationEntity motivation
+        AdoptionMotivationEntity motivation,
+        AdoptionCandidateIncomeEntity income
 ) {
 }
