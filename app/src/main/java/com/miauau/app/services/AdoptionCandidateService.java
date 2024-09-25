@@ -43,6 +43,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateHousingConditionsEntity housingConditions = getAdoptionCandidateHousingConditionsEntity(response, candidate);
     candidate.setHousingConditions(housingConditions);
 
+    AdoptionCandidateHousingProfileEntity housingProfile = getAdoptionCandidateHousingProfileEntity(response, candidate);
+    candidate.setHousingProfile(housingProfile);
+
     return repository.save(candidate);
   }
 
@@ -113,6 +116,20 @@ public class AdoptionCandidateService {
 
     housingConditions.setCandidate(candidate);
     return housingConditions;
+  }
+
+  private static AdoptionCandidateHousingProfileEntity getAdoptionCandidateHousingProfileEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateHousingProfileEntity housingProfile = new AdoptionCandidateHousingProfileEntity();
+    housingProfile.setHouse(response.housingProfile().isHouse());
+    housingProfile.setApartment(response.housingProfile().isApartment());
+    housingProfile.setGrange(response.housingProfile().isGrange());
+    housingProfile.setOther(response.housingProfile().getOther());
+    housingProfile.setOwn(response.housingProfile().isOwn());
+    housingProfile.setRented(response.housingProfile().isRented());
+    housingProfile.setInherited(response.housingProfile().isInherited());
+    housingProfile.setCandidate(candidate);
+
+    return housingProfile;
   }
 }
 

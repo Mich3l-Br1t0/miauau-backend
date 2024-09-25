@@ -15,6 +15,7 @@ public record AdoptionCandidateRequest(
         AdoptionCandidateIncomeEntity income,
         AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse,
         AdoptionCandidateAgreementsEntity agreements,
-        AdoptionCandidateHousingConditionsEntity housingConditions
+        AdoptionCandidateHousingConditionsEntity housingConditions,
+        AdoptionCandidateHousingProfileEntity housingProfile
 ) {
 }
