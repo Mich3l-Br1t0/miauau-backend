@@ -1,6 +1,6 @@
 package com.miauau.app.entities;
 
-//import com.miauau.app.entities.adoption.AdoptionCandidateEntity;
+import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -53,8 +53,8 @@ public class PersonEntity implements Serializable {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-//    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
-//    private AdoptionCandidateEntity candidate;
+    @OneToOne(mappedBy = "person", cascade = CascadeType.REMOVE)
+    private AdoptionCandidateEntity candidate;
 
     @PrePersist
     protected void onCreate() {

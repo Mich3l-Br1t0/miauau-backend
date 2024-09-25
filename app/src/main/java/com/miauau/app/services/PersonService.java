@@ -1,18 +1,12 @@
 package com.miauau.app.services;
 
 import com.miauau.app.entities.PersonEntity;
-import com.miauau.app.entities.AssistanceNeedEntity;
-import com.miauau.app.entities.HealthSituationEntity;
-import com.miauau.app.entities.PersonEntity;
-import com.miauau.app.repositories.PersonRepository;
 import com.miauau.app.repositories.PersonRepository;
 import com.miauau.app.requests.PersonRequest;
-import jakarta.persistence.Column;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -40,8 +34,6 @@ public class PersonService {
 
     return repository.save(person);
   }
-
-
 }
 
 

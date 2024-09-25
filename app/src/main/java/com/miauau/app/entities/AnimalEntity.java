@@ -1,11 +1,13 @@
 package com.miauau.app.entities;
 
+import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -57,6 +59,9 @@ public class AnimalEntity implements Serializable {
 
   @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL)
   private HealthSituationEntity healthSituation;
+
+  @ManyToMany(mappedBy = "wantedAnimals")
+  private List<AdoptionCandidateEntity> adoptionCandidates;
 
   @PrePersist
   protected void onCreate() {
