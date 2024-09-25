@@ -32,8 +32,8 @@ public class PersonEntity implements Serializable {
     @Column(nullable = false)
     private String cpf;
 
-//    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
-//    private Long addressId;
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    private AddressEntity address;
 
     @Column(nullable = false)
     private String phone;

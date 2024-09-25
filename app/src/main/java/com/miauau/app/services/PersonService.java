@@ -1,5 +1,6 @@
 package com.miauau.app.services;
 
+import com.miauau.app.entities.AddressEntity;
 import com.miauau.app.entities.OccupationEntity;
 import com.miauau.app.entities.PersonEntity;
 import com.miauau.app.repositories.PersonRepository;
@@ -41,6 +42,16 @@ public class PersonService {
 
     occupation.setPerson(person);
     person.setOccupation(occupation);
+
+    AddressEntity address = new AddressEntity();
+    address.setZipCode(response.address().getZipCode());
+    address.setStreet(response.address().getStreet());
+    address.setNumber(response.address().getNumber());
+    address.setComplement(response.address().getComplement());
+    address.setNeighborhood(response.address().getNeighborhood());
+
+    address.setPerson(person);
+    person.setAddress(address);
 
     return repository.save(person);
   }
