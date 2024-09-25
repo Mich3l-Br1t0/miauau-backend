@@ -193,8 +193,18 @@ public class AdoptionCandidateService {
     dailyCare.setDailyWalks(request.dailyCare().getDailyWalks());
     dailyCare.setHowWillEducate(request.dailyCare().getHowWillEducate());
     dailyCare.setHasPetCarrier(request.dailyCare().isHasPetCarrier());
+    dailyCare.setFoodType(getFoodType(request, dailyCare));
 
     return dailyCare;
+  }
+
+  private static AdoptionCandidateAnimalFoodTypeEntity getFoodType(AdoptionCandidateRequest request, AdoptionCandidateAnimalDailyCareEntity dailyCare) {
+    AdoptionCandidateAnimalFoodTypeEntity foodType = new AdoptionCandidateAnimalFoodTypeEntity();
+    foodType.setAnimalFood(request.dailyCare().getFoodType().isAnimalFood());
+    foodType.setHumanFood(request.dailyCare().getFoodType().isHumanFood());
+    foodType.setOther(request.dailyCare().getFoodType().getOther());
+    foodType.setDailyCare(dailyCare);
+    return foodType;
   }
 }
 

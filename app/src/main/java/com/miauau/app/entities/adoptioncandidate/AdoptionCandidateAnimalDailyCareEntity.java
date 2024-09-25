@@ -34,9 +34,9 @@ public class AdoptionCandidateAnimalDailyCareEntity implements Serializable {
     @Column(nullable = false)
     private boolean hasPetCarrier;
 
-//    @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAnimalFoodTypeEntity foodType;
-//
+    @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
+    private AdoptionCandidateAnimalFoodTypeEntity foodType;
+
 //    @OneToOne(mappedBy = "dailyCare", cascade = CascadeType.ALL)
 //    private AdoptionCandidateAnimalDailyTimeAloneEntity timeAlone;
 
