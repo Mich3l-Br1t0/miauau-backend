@@ -34,9 +34,9 @@ public class AdoptionCandidateEntity implements Serializable {
     @Column(nullable = false)
     private String whatHappensInCaseOfMoving;
 
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateOtherAnimalsEntity otherAnimals;
-//
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateOtherAnimalsEntity otherAnimals;
+
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private AdoptionCandidateAgreementsEntity agreements;
 

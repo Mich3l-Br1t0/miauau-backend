@@ -17,6 +17,7 @@ public record AdoptionCandidateRequest(
         AdoptionCandidateAgreementsEntity agreements,
         AdoptionCandidateHousingConditionsEntity housingConditions,
         AdoptionCandidateHousingProfileEntity housingProfile,
-        AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal
+        AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal,
+        AdoptionCandidateOtherAnimalsEntity otherAnimals
 ) {
 }

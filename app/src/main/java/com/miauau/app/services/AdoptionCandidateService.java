@@ -49,6 +49,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal = getAdoptionCandidateAttitudesTowardsTheAnimalEntity(response, candidate);
     candidate.setAttitudesTowardsTheAnimal(attitudesTowardsTheAnimal);
 
+    AdoptionCandidateOtherAnimalsEntity otherAnimals = getAdoptionCandidateOtherAnimalsEntity(response, candidate);
+    candidate.setOtherAnimals(otherAnimals);
+
     return repository.save(candidate);
   }
 
@@ -147,6 +150,16 @@ public class AdoptionCandidateService {
     attitudesTowardsTheAnimal.setCandidate(candidate);
 
     return attitudesTowardsTheAnimal;
+  }
+
+  private AdoptionCandidateOtherAnimalsEntity getAdoptionCandidateOtherAnimalsEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateOtherAnimalsEntity otherAnimals = new AdoptionCandidateOtherAnimalsEntity();
+    otherAnimals.setNumberOfAnimalsCurrently(response.otherAnimals().getNumberOfAnimalsCurrently());
+    otherAnimals.setCastrated(response.otherAnimals().isCastrated());
+    otherAnimals.setCastratedObservation(response.otherAnimals().getCastratedObservation());
+    otherAnimals.setHadAnimalsBefore(response.otherAnimals().isHadAnimalsBefore());
+
+    return otherAnimals;
   }
 }
 
