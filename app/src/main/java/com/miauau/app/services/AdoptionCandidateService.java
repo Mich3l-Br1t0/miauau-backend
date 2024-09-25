@@ -31,6 +31,19 @@ public class AdoptionCandidateService {
     candidate.setWhatHappensInCaseOfMoving(response.whatHappensInCaseOfMoving());
     candidate.setWantedAnimals(response.wantedAnimals());
 
+    AdoptionMotivationEntity motivation = getAdoptionMotivationEntity(response, candidate);
+    candidate.setMotivation(motivation);
+
+    AdoptionCandidateIncomeEntity income = getAdoptionCandidateIncomeEntity(response, candidate);
+    candidate.setIncome(income);
+
+    AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse = getAdoptionCandidateResidentsOfTheHouseEntity(response, candidate);
+    candidate.setResidentsOfTheHouse(residentsOfTheHouse);
+
+    return repository.save(candidate);
+  }
+
+  private static AdoptionMotivationEntity getAdoptionMotivationEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate){
     AdoptionMotivationEntity motivation = new AdoptionMotivationEntity();
     motivation.setCompany(response.motivation().isCompany());
     motivation.setGuardAndLook(response.motivation().isGuardAndLook());
@@ -38,20 +51,17 @@ public class AdoptionCandidateService {
     motivation.setOther(response.motivation().getOther());
 
     motivation.setCandidate(candidate);
-    candidate.setMotivation(motivation);
+    return motivation;
+  }
 
+  private static AdoptionCandidateIncomeEntity getAdoptionCandidateIncomeEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate){
     AdoptionCandidateIncomeEntity income = new AdoptionCandidateIncomeEntity();
     income.setFixed(response.income().isFixed());
     income.setVariable(response.income().isVariable());
     income.setDoesNotHave(response.income().isDoesNotHave());
 
     income.setCandidate(candidate);
-    candidate.setIncome(income);
-
-    AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse = getAdoptionCandidateResidentsOfTheHouseEntity(response, candidate);
-    candidate.setResidentsOfTheHouse(residentsOfTheHouse);
-
-    return repository.save(candidate);
+    return income;
   }
 
   private static AdoptionCandidateResidentsOfTheHouseEntity getAdoptionCandidateResidentsOfTheHouseEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
