@@ -1,9 +1,6 @@
 package com.miauau.app.services;
 
-import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
-import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateIncomeEntity;
-import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateResidentsOfTheHouseEntity;
-import com.miauau.app.entities.adoptioncandidate.AdoptionMotivationEntity;
+import com.miauau.app.entities.adoptioncandidate.*;
 import com.miauau.app.repositories.AdoptionCandidateRepository;
 import com.miauau.app.requests.AdoptionCandidateRequest;
 import jakarta.transaction.Transactional;
@@ -40,6 +37,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse = getAdoptionCandidateResidentsOfTheHouseEntity(response, candidate);
     candidate.setResidentsOfTheHouse(residentsOfTheHouse);
 
+    AdoptionCandidateAgreementsEntity agreements = getAdoptionCandidateAgreementsEntity(response, candidate);
+    candidate.setAgreements(agreements);
+
     return repository.save(candidate);
   }
 
@@ -75,6 +75,23 @@ public class AdoptionCandidateService {
 
     residentsOfTheHouse.setCandidate(candidate);
     return residentsOfTheHouse;
+  }
+
+  private static AdoptionCandidateAgreementsEntity getAdoptionCandidateAgreementsEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateAgreementsEntity agreements = new AdoptionCandidateAgreementsEntity();
+    agreements.setCertaintyOfAdoption(response.agreements().isCertaintyOfAdoption());
+    agreements.setAwareOfTheImportanceOfNeuteringTheAnimal(response.agreements().getAwareOfTheImportanceOfNeuteringTheAnimal());
+    agreements.setAgreesWithCastration(response.agreements().isAgreesWithCastration());
+    agreements.setLongTermCommitment(response.agreements().isLongTermCommitment());
+    agreements.setImageUse(response.agreements().isImageUse());
+    agreements.setMonetaryContribution(response.agreements().isMonetaryContribution());
+    agreements.setHouseVisit(response.agreements().isHouseVisit());
+    agreements.setNotifyBeforeDonateToSomeoneElse(response.agreements().isNotifyBeforeDonateToSomeoneElse());
+    agreements.setTrueInformation(response.agreements().isTrueInformation());
+    agreements.setVideoPresentation(response.agreements().isVideoPresentation());
+
+    agreements.setCandidate(candidate);
+    return agreements;
   }
 }
 
