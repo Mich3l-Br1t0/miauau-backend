@@ -2,6 +2,7 @@ package com.miauau.app.services;
 
 import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
 import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateIncomeEntity;
+import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateResidentsOfTheHouseEntity;
 import com.miauau.app.entities.adoptioncandidate.AdoptionMotivationEntity;
 import com.miauau.app.repositories.AdoptionCandidateRepository;
 import com.miauau.app.requests.AdoptionCandidateRequest;
@@ -47,7 +48,23 @@ public class AdoptionCandidateService {
     income.setCandidate(candidate);
     candidate.setIncome(income);
 
+    AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse = getAdoptionCandidateResidentsOfTheHouseEntity(response, candidate);
+    candidate.setResidentsOfTheHouse(residentsOfTheHouse);
+
     return repository.save(candidate);
+  }
+
+  private static AdoptionCandidateResidentsOfTheHouseEntity getAdoptionCandidateResidentsOfTheHouseEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+    AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse = new AdoptionCandidateResidentsOfTheHouseEntity();
+    residentsOfTheHouse.setLivesAlone(response.residentsOfTheHouse().isLivesAlone());
+    residentsOfTheHouse.setAmountOfChildrenInTheHouse(response.residentsOfTheHouse().getAmountOfChildrenInTheHouse());
+    residentsOfTheHouse.setChildrensAges(response.residentsOfTheHouse().getChildrensAges());
+    residentsOfTheHouse.setAlergicResidents(response.residentsOfTheHouse().isAlergicResidents());
+    residentsOfTheHouse.setWhatHappensInCaseOfAlergies(response.residentsOfTheHouse().getWhatHappensInCaseOfAlergies());
+    residentsOfTheHouse.setAllResidentsAgree(response.residentsOfTheHouse().isAllResidentsAgree());
+
+    residentsOfTheHouse.setCandidate(candidate);
+    return residentsOfTheHouse;
   }
 }
 

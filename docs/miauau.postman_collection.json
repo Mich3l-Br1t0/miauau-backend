@@ -152,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"person\": {\r\n    \"id\": \"{{person_id}}\"\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": \"{{animal_id}}\"\r\n    }\r\n  ],\r\n  \"motivation\": {\r\n    \"company\": true,\r\n    \"guardAndLook\": false,\r\n    \"giftSomeone\": false,\r\n    \"other\": null\r\n  },\r\n  \"income\": {\r\n    \"fixed\": false,\r\n    \"variable\": true,\r\n    \"doesNotHave\": false\r\n  }\r\n}\r\n",
+							"raw": "{\r\n  \"person\": {\r\n    \"id\": \"{{person_id}}\"\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": \"{{animal_id}}\"\r\n    }\r\n  ],\r\n  \"motivation\": {\r\n    \"company\": true,\r\n    \"guardAndLook\": false,\r\n    \"giftSomeone\": false,\r\n    \"other\": null\r\n  },\r\n  \"income\": {\r\n    \"fixed\": false,\r\n    \"variable\": true,\r\n    \"doesNotHave\": false\r\n  },\r\n  \"residentsOfTheHouse\": {\r\n    \"livesAlone\": true,\r\n    \"livesWithWho\": null,\r\n    \"amountOfChildrenInTheHouse\": 0,\r\n    \"childrensAges\": null,\r\n    \"alergicResidents\": false,\r\n    \"whatHappensInCaseOfAlergies\": null,\r\n    \"allResidentsAgree\": true\r\n  }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
