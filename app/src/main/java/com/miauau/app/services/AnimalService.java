@@ -23,15 +23,15 @@ public class AnimalService {
   }
 
   @Transactional
-  public AnimalEntity save(AnimalRequest response) {
+  public AnimalEntity save(AnimalRequest request) {
     AnimalEntity animal = new AnimalEntity();
-    animal.setName(response.name());
-    animal.setSex(response.sex());
-    animal.setDescription(response.description());
-    animal.setAgeGroupId(response.ageGroupId());
-    animal.setCastrated(response.castrated());
-    animal.setColor(response.color());
-    animal.setApproximatedAge(response.approximatedAge());
+    animal.setName(request.name());
+    animal.setSex(request.sex());
+    animal.setDescription(request.description());
+    animal.setAgeGroupId(request.ageGroupId());
+    animal.setCastrated(request.castrated());
+    animal.setColor(request.color());
+    animal.setApproximatedAge(request.approximatedAge());
 
     HealthSituationEntity healthSituation = new HealthSituationEntity();
     healthSituation.setAnimal(animal);
