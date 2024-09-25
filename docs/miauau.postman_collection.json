@@ -9,6 +9,16 @@
 		{
 			"name": "Animal List",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -26,11 +36,21 @@
 		{
 			"name": "New Animal",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Gato\",\n    \"sex\": \"M\",\n    \"description\": \"Um gato quieto\",\n    \"ageGroupId\": \"2\",\n    \"color\": \"2\",\n    \"aproximatedAge\": \"5\"\n}",
+					"raw": "{\n  \"name\": \"Buddy\",\n  \"sex\": \"M\",\n  \"description\": \"Friendly dog\",\n  \"ageGroupId\": 1,\n  \"castrated\": true,\n  \"color\": 2,\n  \"approximatedAge\": 5\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,6 +64,75 @@
 					],
 					"path": [
 						"animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"Michel\",\n    \"password\": \"123456789\",\n    \"role\": \"ADMIN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code == 200) {",
+							"    const access_token = pm.response.json().token;",
+							"    pm.collectionVariables.set(\"access_token\", access_token);",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"Michel\",\n    \"password\": \"123456789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"login"
 					]
 				}
 			},
@@ -76,6 +165,11 @@
 		{
 			"key": "base_url",
 			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
 			"type": "string"
 		}
 	]

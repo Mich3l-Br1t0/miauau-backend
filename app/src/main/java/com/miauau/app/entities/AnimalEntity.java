@@ -1,4 +1,4 @@
-package com.miauau.app.entity;
+package com.miauau.app.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

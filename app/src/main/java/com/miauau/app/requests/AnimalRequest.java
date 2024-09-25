@@ -1,4 +1,4 @@
-package com.miauau.app.request;
+package com.miauau.app.requests;
 
 public record AnimalRequest(
     String name,
