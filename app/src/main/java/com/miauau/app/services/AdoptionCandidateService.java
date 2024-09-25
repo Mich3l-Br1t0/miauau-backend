@@ -40,6 +40,9 @@ public class AdoptionCandidateService {
     AdoptionCandidateAgreementsEntity agreements = getAdoptionCandidateAgreementsEntity(response, candidate);
     candidate.setAgreements(agreements);
 
+    AdoptionCandidateHousingConditionsEntity housingConditions = getAdoptionCandidateHousingConditionsEntity(response, candidate);
+    candidate.setHousingConditions(housingConditions);
+
     return repository.save(candidate);
   }
 
@@ -92,6 +95,24 @@ public class AdoptionCandidateService {
 
     agreements.setCandidate(candidate);
     return agreements;
+  }
+
+  private static AdoptionCandidateHousingConditionsEntity getAdoptionCandidateHousingConditionsEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate){
+    AdoptionCandidateHousingConditionsEntity housingConditions = new AdoptionCandidateHousingConditionsEntity();
+    housingConditions.setPool(response.housingConditions().isPool());
+    housingConditions.setPoolWithProtection(response.housingConditions().getPoolWithProtection());
+    housingConditions.setFence(response.housingConditions().isFence());
+    housingConditions.setWall(response.housingConditions().isWall());
+    housingConditions.setWindowsWithScreen(response.housingConditions().isWindowsWithScreen());
+    housingConditions.setBalconyWithScreen(response.housingConditions().isBalconyWithScreen());
+    housingConditions.setWillInstallScreens(response.housingConditions().isWillInstallScreens());
+    housingConditions.setYard(response.housingConditions().isYard());
+    housingConditions.setBigYard(response.housingConditions().getBigYard());
+    housingConditions.setSafeHouse(response.housingConditions().isSafeHouse());
+    housingConditions.setCondominiumRestriction(response.housingConditions().getCondominiumRestriction());
+
+    housingConditions.setCandidate(candidate);
+    return housingConditions;
   }
 }
 
