@@ -1,6 +1,7 @@
 package com.miauau.app.services;
 
 import com.miauau.app.entities.adoptioncandidate.AdoptionCandidateEntity;
+import com.miauau.app.entities.adoptioncandidate.AdoptionMotivationEntity;
 import com.miauau.app.repositories.AdoptionCandidateRepository;
 import com.miauau.app.requests.AdoptionCandidateRequest;
 import jakarta.transaction.Transactional;
@@ -27,6 +28,15 @@ public class AdoptionCandidateService {
     candidate.setPossibilityOfMoving(response.possibilityOfMoving());
     candidate.setWhatHappensInCaseOfMoving(response.whatHappensInCaseOfMoving());
     candidate.setWantedAnimals(response.wantedAnimals());
+
+    AdoptionMotivationEntity motivation = new AdoptionMotivationEntity();
+    motivation.setCompany(response.motivation().isCompany());
+    motivation.setGuardAndLook(response.motivation().isGuardAndLook());
+    motivation.setGiftSomeone(response.motivation().isGiftSomeone());
+    motivation.setOther(response.motivation().getOther());
+
+    motivation.setCandidate(candidate);
+    candidate.setMotivation(motivation);
 
     return repository.save(candidate);
   }

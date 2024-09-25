@@ -152,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"person\": {\r\n    \"id\": {{person_id}}\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": {{animal_id}}\r\n    }\r\n  ]\r\n}\r\n",
+							"raw": "{\r\n  \"person\": {\r\n    \"id\": \"{{person_id}}\"\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": \"{{animal_id}}\"\r\n    }\r\n  ],\r\n  \"motivation\": {\r\n    \"company:\": true,\r\n    \"guardAndLook\": false,\r\n    \"giftSomeone\": false,\r\n    \"other\": null\r\n  }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
