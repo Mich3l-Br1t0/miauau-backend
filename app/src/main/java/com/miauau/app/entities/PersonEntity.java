@@ -44,8 +44,8 @@ public class PersonEntity implements Serializable {
     @Column(nullable = false)
     private String email;
 
-//    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
-//    private Long occupationId;
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    private OccupationEntity occupation;
 
     @Column(nullable = false)
     private String profession;

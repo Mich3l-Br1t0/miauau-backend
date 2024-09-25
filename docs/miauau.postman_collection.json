@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Ana Maria\",\r\n  \"dateOfBirth\": \"2001-01-01T00:00:00\",\r\n  \"rg\": \"253085779\",\r\n  \"cpf\": \"57796988052\",\r\n  \"phone\": \"11912345678\",\r\n  \"landline\": null,\r\n  \"email\": \"anamaria@gmail.com\",\r\n  \"profession\": \"Professora\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Ana Maria\",\r\n  \"dateOfBirth\": \"2001-01-01T00:00:00\",\r\n  \"rg\": \"253085779\",\r\n  \"cpf\": \"57796988052\",\r\n  \"phone\": \"11912345678\",\r\n  \"landline\": null,\r\n  \"email\": \"anamaria@gmail.com\",\r\n  \"profession\": \"Professora\",\r\n  \"occupation\": {\r\n    \"working\": true,\r\n    \"studying\": true,\r\n    \"unemployed\": false,\r\n    \"other\": null\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

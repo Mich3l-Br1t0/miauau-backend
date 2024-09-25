@@ -1,5 +1,6 @@
 package com.miauau.app.services;
 
+import com.miauau.app.entities.OccupationEntity;
 import com.miauau.app.entities.PersonEntity;
 import com.miauau.app.repositories.PersonRepository;
 import com.miauau.app.requests.PersonRequest;
@@ -31,6 +32,15 @@ public class PersonService {
     person.setLandline(response.landline());
     person.setEmail(response.email());
     person.setProfession(response.profession());
+
+    OccupationEntity occupation = new OccupationEntity();
+    occupation.setWorking(response.occupation().isWorking());
+    occupation.setStudying(response.occupation().isStudying());
+    occupation.setUnemployed(response.occupation().isUnemployed());
+    occupation.setOther(response.occupation().getOther());
+
+    occupation.setPerson(person);
+    person.setOccupation(occupation);
 
     return repository.save(person);
   }

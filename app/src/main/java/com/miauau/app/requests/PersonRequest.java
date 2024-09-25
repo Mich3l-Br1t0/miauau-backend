@@ -1,5 +1,7 @@
 package com.miauau.app.requests;
 
+import com.miauau.app.entities.OccupationEntity;
+
 import java.time.LocalDateTime;
 
 public record PersonRequest(
@@ -10,6 +12,7 @@ public record PersonRequest(
         String phone,
         String landline,
         String email,
-        String profession
+        String profession,
+        OccupationEntity occupation
 ) {
 }
