@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -141,7 +142,7 @@ public class AdoptionCandidateService {
     return housingProfile;
   }
 
-  private AdoptionCandidateAttitudesTowardsTheAnimalEntity getAdoptionCandidateAttitudesTowardsTheAnimalEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+  private static AdoptionCandidateAttitudesTowardsTheAnimalEntity getAdoptionCandidateAttitudesTowardsTheAnimalEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
     AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal = new AdoptionCandidateAttitudesTowardsTheAnimalEntity();
     attitudesTowardsTheAnimal.setGetsLost(response.attitudesTowardsTheAnimal().getGetsLost());
     attitudesTowardsTheAnimal.setGetsSickOrAccident(response.attitudesTowardsTheAnimal().getGetsSickOrAccident());
@@ -155,17 +156,37 @@ public class AdoptionCandidateService {
     return attitudesTowardsTheAnimal;
   }
 
-  private AdoptionCandidateOtherAnimalsEntity getAdoptionCandidateOtherAnimalsEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+  private static AdoptionCandidateOtherAnimalsEntity getAdoptionCandidateOtherAnimalsEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
     AdoptionCandidateOtherAnimalsEntity otherAnimals = new AdoptionCandidateOtherAnimalsEntity();
     otherAnimals.setNumberOfAnimalsCurrently(response.otherAnimals().getNumberOfAnimalsCurrently());
     otherAnimals.setCastrated(response.otherAnimals().isCastrated());
     otherAnimals.setCastratedObservation(response.otherAnimals().getCastratedObservation());
     otherAnimals.setHadAnimalsBefore(response.otherAnimals().isHadAnimalsBefore());
+    otherAnimals.setPreviousAnimals(getPreviousAnimals(response, otherAnimals));
 
     return otherAnimals;
   }
 
-  private AdoptionCandidateAnimalDailyCareEntity getAdoptionCandidateAnimalDailyCareEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
+  private static List<AdoptionCandidatePreviousAnimalsEntity> getPreviousAnimals(AdoptionCandidateRequest request, AdoptionCandidateOtherAnimalsEntity other){
+    List<AdoptionCandidatePreviousAnimalsEntity> previousAnimals = new ArrayList<AdoptionCandidatePreviousAnimalsEntity>();
+    request.otherAnimals().getPreviousAnimals().forEach((AdoptionCandidatePreviousAnimalsEntity animalRequest) -> {
+      AdoptionCandidatePreviousAnimalsEntity animal = new AdoptionCandidatePreviousAnimalsEntity();
+      animal.setRanAway(animalRequest.isRanAway());
+      animal.setRanOver(animalRequest.isRanOver());
+      animal.setDiedOfOldAge(animalRequest.isDiedOfOldAge());
+      animal.setDiedByAccident(animalRequest.isDiedByAccident());
+      animal.setDisappeared(animalRequest.isDisappeared());
+      animal.setDonatedToSomeone(animalRequest.isDonatedToSomeone());
+      animal.setStolen(animalRequest.isStolen());
+      animal.setDiedFromIllness(animalRequest.isDiedFromIllness());
+      animal.setDateOfOccurrence(animalRequest.getDateOfOccurrence());
+      animal.setOtherAnimals(other);
+      previousAnimals.add(animal);
+    });
+    return  previousAnimals;
+  }
+
+  private static AdoptionCandidateAnimalDailyCareEntity getAdoptionCandidateAnimalDailyCareEntity(AdoptionCandidateRequest response, AdoptionCandidateEntity candidate) {
     AdoptionCandidateAnimalDailyCareEntity dailyCare = new AdoptionCandidateAnimalDailyCareEntity();
     dailyCare.setResponsibleForCare(response.dailyCare().getResponsibleForCare());
     dailyCare.setResponsibleForCareInCaseOfTravel(response.dailyCare().getResponsibleForCareInCaseOfTravel());

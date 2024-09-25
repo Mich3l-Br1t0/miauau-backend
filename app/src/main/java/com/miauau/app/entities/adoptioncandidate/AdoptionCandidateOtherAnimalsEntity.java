@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,8 +32,8 @@ public class AdoptionCandidateOtherAnimalsEntity implements Serializable {
     @Column(nullable = false)
     private boolean hadAnimalsBefore;
 
-//    @OneToMany(mappedBy = "otherAnimals", cascade = CascadeType.ALL)
-//    private List<AdoptionCandidatePreviousAnimalsEntity> previousAnimals;
+    @OneToMany(mappedBy = "otherAnimals", cascade = CascadeType.ALL)
+    private List<AdoptionCandidatePreviousAnimalsEntity> previousAnimals;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
