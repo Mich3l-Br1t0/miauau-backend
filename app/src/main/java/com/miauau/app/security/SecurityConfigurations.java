@@ -31,6 +31,7 @@ public class SecurityConfigurations {
             //            .requestMatchers(HttpMethod.POST, "/animal").hasRole("ADMIN")
             // TODO: REMOVER AO SUBIR APP
             .requestMatchers(HttpMethod.POST, "/animal").permitAll()
+            .requestMatchers(HttpMethod.GET, "/animal").permitAll()
             .anyRequest().authenticated()
         )
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
