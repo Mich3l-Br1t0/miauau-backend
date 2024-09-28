@@ -2,7 +2,10 @@ package com.miauau.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,6 +14,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "assistanceNeed")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AssistanceNeedEntity implements Serializable {
   @Serial
   private static final long serialVersionUID = 1L;
@@ -20,13 +26,13 @@ public class AssistanceNeedEntity implements Serializable {
   private UUID id;
 
   @Column(nullable = false)
-  private boolean veterinarian;
+  private boolean veterinarian = false;
 
   @Column(nullable = false)
-  private boolean urgency;
+  private boolean urgency = false;
 
   @Column(nullable = false)
-  private boolean bath;
+  private boolean bath = false;
 
   @Column
   private String other;
