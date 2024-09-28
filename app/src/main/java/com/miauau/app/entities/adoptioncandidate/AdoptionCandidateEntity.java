@@ -34,32 +34,32 @@ public class AdoptionCandidateEntity implements Serializable {
     @Column(nullable = false)
     private String whatHappensInCaseOfMoving;
 
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateOtherAnimalsEntity otherAnimals;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAgreementsEntity agreements;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAnimalDailyCareEntity dailyCare;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateHousingProfileEntity housingProfile;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateHousingConditionsEntity housingConditions;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionCandidateIncomeEntity income;
-//
-//    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-//    private AdoptionMotivationEntity motivation;
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateOtherAnimalsEntity otherAnimals;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateAgreementsEntity agreements;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateAnimalDailyCareEntity dailyCare;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateAttitudesTowardsTheAnimalEntity attitudesTowardsTheAnimal;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateHousingProfileEntity housingProfile;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateHousingConditionsEntity housingConditions;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateResidentsOfTheHouseEntity residentsOfTheHouse;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionCandidateIncomeEntity income;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
+    private AdoptionMotivationEntity motivation;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(cascade = CascadeType.REMOVE)

@@ -23,32 +23,32 @@ public class PersonService {
   }
 
   @Transactional
-  public PersonEntity save(PersonRequest response) {
+  public PersonEntity save(PersonRequest request) {
     PersonEntity person = new PersonEntity();
-    person.setName(response.name());
-    person.setDateOfBirth(response.dateOfBirth());
-    person.setRg(response.rg());
-    person.setCpf(response.cpf());
-    person.setPhone(response.phone());
-    person.setLandline(response.landline());
-    person.setEmail(response.email());
-    person.setProfession(response.profession());
+    person.setName(request.name());
+    person.setDateOfBirth(request.dateOfBirth());
+    person.setRg(request.rg());
+    person.setCpf(request.cpf());
+    person.setPhone(request.phone());
+    person.setLandline(request.landline());
+    person.setEmail(request.email());
+    person.setProfession(request.profession());
 
     OccupationEntity occupation = new OccupationEntity();
-    occupation.setWorking(response.occupation().isWorking());
-    occupation.setStudying(response.occupation().isStudying());
-    occupation.setUnemployed(response.occupation().isUnemployed());
-    occupation.setOther(response.occupation().getOther());
+    occupation.setWorking(request.occupation().isWorking());
+    occupation.setStudying(request.occupation().isStudying());
+    occupation.setUnemployed(request.occupation().isUnemployed());
+    occupation.setOther(request.occupation().getOther());
 
     occupation.setPerson(person);
     person.setOccupation(occupation);
 
     AddressEntity address = new AddressEntity();
-    address.setZipCode(response.address().getZipCode());
-    address.setStreet(response.address().getStreet());
-    address.setNumber(response.address().getNumber());
-    address.setComplement(response.address().getComplement());
-    address.setNeighborhood(response.address().getNeighborhood());
+    address.setZipCode(request.address().getZipCode());
+    address.setStreet(request.address().getStreet());
+    address.setNumber(request.address().getNumber());
+    address.setComplement(request.address().getComplement());
+    address.setNeighborhood(request.address().getNeighborhood());
 
     address.setPerson(person);
     person.setAddress(address);
