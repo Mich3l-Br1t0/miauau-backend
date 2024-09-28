@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "2d25bce6-da50-46ef-831a-81b34f33c7fa",
+		"_postman_id": "cb8b2daa-efef-4321-a16e-73d9b1eaab6c",
 		"name": "miauau",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "38574527"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21397337"
 	},
 	"item": [
 		{
@@ -23,7 +23,16 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/auth/register"
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
@@ -56,7 +65,16 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/auth/login"
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -70,13 +88,53 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/animal"
+						"url": {
+							"raw": "{{base_url}}/animal",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Animal Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -100,22 +158,87 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "{\n  \"name\": \"Buddy\",\n  \"sex\": \"M\",\n  \"description\": \"Friendly dog\",\n  \"ageGroupId\": 1,\n  \"castrated\": true,\n  \"color\": 2,\n  \"approximatedAge\": 5\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"contentType": "image/png",
+									"type": "file",
+									"src": "/home/michel/Pictures/Capturas de tela/Captura de tela de 2024-09-28 13-19-09.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/animal",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Animal",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Buddy\",\n  \"sex\": \"M\",\n  \"description\": \"Friendly dog\",\n  \"ageGroupId\": 1,\n  \"castrated\": true,\n  \"color\": 2,\n  \"approximatedAge\": 5\n}",
+							"raw": "{\n  \"name\": \"Carlinhos\",\n  \"sex\": \"M\",\n  \"description\": \"Meu amicão\",\n  \"ageGroupId\": 1,\n  \"castrated\": true,\n  \"color\": 2,\n  \"approximatedAge\": 5\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/animal"
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Animal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -144,9 +267,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -159,7 +286,15 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/adoptionCandidate"
+						"url": {
+							"raw": "{{base_url}}/adoptionCandidate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"adoptionCandidate"
+							]
+						}
 					},
 					"response": []
 				}
@@ -188,9 +323,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -203,7 +342,15 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/person"
+						"url": {
+							"raw": "{{base_url}}/person",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"person"
+							]
+						}
 					},
 					"response": []
 				},
@@ -212,13 +359,25 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/person"
+						"url": {
+							"raw": "{{base_url}}/person",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"person"
+							]
+						}
 					},
 					"response": []
 				}
