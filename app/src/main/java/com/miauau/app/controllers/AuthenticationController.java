@@ -1,6 +1,7 @@
 package com.miauau.app.controllers;
 
 import com.miauau.app.entities.UserEntity;
+import com.miauau.app.enums.UserRole;
 import com.miauau.app.repositories.UserRepository;
 import com.miauau.app.requests.AuthenticationRequest;
 import com.miauau.app.requests.RegisterRequest;
@@ -43,7 +44,8 @@ public class AuthenticationController {
       return ResponseEntity.badRequest().build();
 
     String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-    UserEntity newUser = new UserEntity(data.login(), encryptedPassword, data.role());
+    UserRole role = data.role() == null ? UserRole.USER : data.role();
+    UserEntity newUser = new UserEntity(data.login(), encryptedPassword, role);
 
     this.repository.save(newUser);
 
