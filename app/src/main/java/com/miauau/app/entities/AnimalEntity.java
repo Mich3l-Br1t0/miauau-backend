@@ -49,13 +49,13 @@ public class AnimalEntity implements Serializable {
   private Integer approximatedAge;
 
   @Column
-  private String vaccination_application_date;
+  private String vaccinationApplicationDate;
 
   @Column
-  private String anti_fleas_application_date;
+  private String antiFleasApplicationDate;
 
   @Column
-  private String deworming_application_date;
+  private String dewormingApplicationDate;
 
   @Column(nullable = false)
   private LocalDateTime createdAt;

@@ -8,9 +8,9 @@ public record AnimalRequest(
     Boolean castrated,
     Integer color,
     Integer approximatedAge,
-    String vaccination_application_date,
-    String anti_fleas_application_date,
-    String deworming_application_date,
+    String vaccinationApplicationDate,
+    String antiFleasApplicationDate,
+    String dewormingApplicationDate,
     //  Assistance Need Info
     Boolean veterinarian,
     Boolean urgency,
