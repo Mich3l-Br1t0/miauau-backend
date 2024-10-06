@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "2d25bce6-da50-46ef-831a-81b34f33c7fa",
+		"_postman_id": "cb8b2daa-efef-4321-a16e-73d9b1eaab6c",
 		"name": "miauau",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "38574527"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21397337"
 	},
 	"item": [
 		{
@@ -23,7 +23,16 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/auth/register"
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
@@ -56,7 +65,16 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/auth/login"
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -70,13 +88,53 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/animal"
+						"url": {
+							"raw": "{{base_url}}/animal",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Animal Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -100,22 +158,88 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "{\n  \"name\": \"Bella\",\n  \"sex\": \"F\",\n  \"description\": \"A friendly dog\",\n  \"ageGroupId\": 2,\n  \"castrated\": true,\n  \"color\": 1,\n  \"approximatedAge\": 3,\n  \"vaccinationApplicationDate\": \"2023-01-15\",\n  \"antiFleasApplicationDate\": \"2023-02-10\",\n  \"dewormingApplicationDate\": \"2023-03-05\",\n  \"veterinarian\": true,\n  \"urgency\": false,\n  \"bath\": true,\n  \"otherAssistanceNeedInfo\": \"Needs regular check-ups\",\n  \"healthy\": true,\n  \"dirty\": false,\n  \"hurt\": false,\n  \"mange\": false,\n  \"fleas\": false,\n  \"ticks\": false,\n  \"vomiting\": false,\n  \"limping\": false,\n  \"otherHealthSituation\": \"None\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"contentType": "image/png",
+									"description": "Add uma imagem",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/animal",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Animal",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Buddy\",\n  \"sex\": \"M\",\n  \"description\": \"Friendly dog\",\n  \"ageGroupId\": 1,\n  \"castrated\": true,\n  \"color\": 2,\n  \"approximatedAge\": 5\n}",
+							"raw": "{\n  \"name\": \"Bella\",\n  \"sex\": \"F\",\n  \"description\": \"A strange orange cat\",\n  \"ageGroupId\": 2,\n  \"castrated\": true,\n  \"color\": 1,\n  \"approximatedAge\": 3,\n  \"vaccinationApplicationDate\": \"2023-01-15\",\n  \"antiFleasApplicationDate\": \"2023-02-10\",\n  \"dewormingApplicationDate\": \"2023-03-05\",\n  \"veterinarian\": true,\n  \"urgency\": false,\n  \"bath\": true,\n  \"otherAssistanceNeedInfo\": \"Needs regular check-ups\",\n  \"healthy\": true,\n  \"dirty\": false,\n  \"hurt\": false,\n  \"mange\": false,\n  \"fleas\": false,\n  \"ticks\": false,\n  \"vomiting\": false,\n  \"limping\": false,\n  \"otherHealthSituation\": \"None\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/animal"
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Animal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/animal/{{animal_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"animal",
+								"{{animal_id}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -144,22 +268,34 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"person\": {\r\n    \"id\": \"{{person_id}}\"\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": \"{{animal_id}}\"\r\n    }\r\n  ],\r\n  \"motivation\": {\r\n    \"company\": true,\r\n    \"guardAndLook\": false,\r\n    \"giftSomeone\": false,\r\n    \"other\": null\r\n  },\r\n  \"income\": {\r\n    \"fixed\": false,\r\n    \"variable\": true,\r\n    \"doesNotHave\": false\r\n  },\r\n  \"residentsOfTheHouse\": {\r\n    \"livesAlone\": true,\r\n    \"livesWithWho\": null,\r\n    \"amountOfChildrenInTheHouse\": 0,\r\n    \"childrensAges\": null,\r\n    \"alergicResidents\": false,\r\n    \"whatHappensInCaseOfAlergies\": null,\r\n    \"allResidentsAgree\": true\r\n  },\r\n  \"agreements\": {\r\n    \"certaintyOfAdoption\": true,\r\n    \"awareOfTheImportanceOfNeuteringTheAnimal\": true,\r\n    \"agreesWithCastration\": true,\r\n    \"longTermCommitment\": true,\r\n    \"imageUse\": true,\r\n    \"monetaryContribution\": true,\r\n    \"houseVisit\": true,\r\n    \"notifyBeforeDonateToSomeoneElse\": true,\r\n    \"trueInformation\": true,\r\n    \"videoPresentation\": true\r\n  },\r\n  \"housingConditions\": {\r\n    \"pool\": false,\r\n    \"poolWithProtection\": null,\r\n    \"fence\": false,\r\n    \"wall\": false,\r\n    \"windowsWithScreen\": false,\r\n    \"balconyWithScreen\": false,\r\n    \"willInstallScreens\": true,\r\n    \"yard\": false,\r\n    \"bigYard\": null,\r\n    \"safeHouse\": true,\r\n    \"flightRisk\": false,\r\n    \"condominiumRestriction\": null\r\n  },\r\n  \"housingProfile\": {\r\n    \"house\": false,\r\n    \"apartment\": true,\r\n    \"grange\": false,\r\n    \"other\": null,\r\n    \"own\": false,\r\n    \"rented\": true,\r\n    \"inherited\": false\r\n  },\r\n  \"attitudesTowardsTheAnimal\": {\r\n    \"getsLost\": \"Vou procurar\",\r\n    \"getsSickOrAccident\": \"Levar ao veterinário\",\r\n    \"hurtsYourChild\": \"bla bla bla\",\r\n    \"damagesValuableObject\": \"bla bla bla\",\r\n    \"peesOrPoopsInInappropriatePlace\": \"bla bla\",\r\n    \"doesThingsYouDontWant\": \"bla\",\r\n    \"ifYouHaveAChild\": \"bla\"\r\n  },\r\n  \"otherAnimals\": {\r\n    \"numberOfAnimalsCurrently\": 2,\r\n    \"castrated\": true,\r\n    \"castratedObservation\": null,\r\n    \"hadAnimalsBefore\": true,\r\n    \"previousAnimals\": [\r\n        {\r\n            \"ranAway\": false,\r\n            \"ranOver\": false,\r\n            \"diedOfOldAge\": true,\r\n            \"diedByAccident\": false,\r\n            \"disappeared\": false,\r\n            \"donatedToSomeone\": false,\r\n            \"stolen\": false,\r\n            \"diedFromIllness\": false,\r\n            \"dateOfOccurrence\": \"2001-01-01T00:00:00\"\r\n        }\r\n    ]\r\n  },\r\n  \"dailyCare\": {\r\n    \"responsibleForCare\": \"Eu\",\r\n    \"responsibleForCareInCaseOfTravel\": \"Mãe\",\r\n    \"dailyWalks\": 3,\r\n    \"howWillEducate\": \"bla bla bla\",\r\n    \"hasPetCarrier\": true,\r\n    \"foodType\": {\r\n        \"animalFood\": true,\r\n        \"humanFood\": false,\r\n        \"other\": null\r\n    },\r\n    \"timeAlone\": {\r\n        \"oneToThreeHours\": false,\r\n        \"threeToSevenHours\": false,\r\n        \"eightOrMoreHours\": true\r\n    }\r\n  }\r\n}\r\n",
+							"raw": "{\r\n  \"person\": {\r\n    \"id\": {{person_id}}\r\n  },\r\n  \"possibilityOfMoving\": true,\r\n  \"whatHappensInCaseOfMoving\": \"I will take the animal with me.\",\r\n  \"wantedAnimals\": [\r\n    {\r\n      \"id\": {{animal_id}}\r\n    }\r\n  ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{base_url}}/adoptionCandidate"
+						"url": {
+							"raw": "{{base_url}}/adoptionCandidate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"adoptionCandidate"
+							]
+						}
 					},
 					"response": []
 				}
@@ -188,9 +324,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -203,7 +343,15 @@
 								}
 							}
 						},
-						"url": "{{base_url}}/person"
+						"url": {
+							"raw": "{{base_url}}/person",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"person"
+							]
+						}
 					},
 					"response": []
 				},
@@ -212,13 +360,25 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": {
-								"token": "{{access_token}}"
-							}
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/person"
+						"url": {
+							"raw": "{{base_url}}/person",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"person"
+							]
+						}
 					},
 					"response": []
 				}
