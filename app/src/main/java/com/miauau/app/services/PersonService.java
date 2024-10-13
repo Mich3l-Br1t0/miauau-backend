@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PersonService {
@@ -20,6 +21,16 @@ public class PersonService {
   @Transactional
   public List<PersonEntity> getAll() {
     return repository.findAll();
+  }
+
+  @Transactional
+  public List<PersonEntity> getVolunteers() {
+    return repository.findByVolunteerTrue();
+  }
+
+  @Transactional
+  public PersonEntity getById(UUID id) {
+    return repository.findById(id).orElse(null);
   }
 
   @Transactional

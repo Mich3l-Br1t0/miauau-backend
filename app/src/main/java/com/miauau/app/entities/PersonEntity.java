@@ -13,51 +13,54 @@ import java.util.UUID;
 @Table(name = "person")
 @Data
 public class PersonEntity implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+  @Serial
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
 
-    @Column(nullable = false)
-    private String name;
+  @Column(nullable = false)
+  private String name;
 
-    @Column(nullable = false)
-    private LocalDateTime dateOfBirth;
+  @Column
+  private LocalDateTime dateOfBirth;
 
-    @Column(nullable = false)
-    private String rg;
+  @Column(nullable = false)
+  private Boolean volunteer;
 
-    @Column(nullable = false)
-    private String cpf;
+  @Column
+  private String rg;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private AddressEntity address;
+  @Column
+  private String cpf;
 
-    @Column(nullable = false)
-    private String phone;
+  @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  private AddressEntity address;
 
-    @Column
-    private String landline;
+  @Column(nullable = false)
+  private String phone;
 
-    @Column(nullable = false)
-    private String email;
+  @Column
+  private String landline;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private OccupationEntity occupation;
+  @Column(nullable = false)
+  private String email;
 
-    @Column(nullable = false)
-    private String profession;
+  @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  private OccupationEntity occupation;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+  @Column(nullable = false)
+  private String profession;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.REMOVE)
-    private AdoptionCandidateEntity candidate;
+  @Column(nullable = false)
+  private LocalDateTime createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
+  @OneToOne(mappedBy = "person", cascade = CascadeType.REMOVE)
+  private AdoptionCandidateEntity candidate;
+
+  @PrePersist
+  protected void onCreate() {
+    this.createdAt = LocalDateTime.now();
+  }
 }
